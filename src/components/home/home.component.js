@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../header/header.component';
 import TextSection from '../textSection/textSection.component';
 import Footer from '../footer/footer.component';
+import Counter from '../counter/counter.component';
 
 const TEXTS = {
   HEADER: 'Innowacyjna nazwa bloga',
@@ -17,6 +18,7 @@ class App extends Component {
         <Header title={TEXTS.HEADER} />
         <TextSection text={TEXTS.TEXT1} />
         <TextSection text={TEXTS.TEXT2} />
+        <Counter />
         <Footer text={TEXTS.FOOTER} />
       </div>
     )
