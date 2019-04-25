@@ -10,12 +10,28 @@ const TEXTS = {
 };
 
 class Post extends Component {
+  state = {
+    postDetails: {}
+  };
+
+  componentDidMount() {
+    const URL = `https://jsonplaceholder.typicode.com/posts/${this.props.match.params.id}`;
+
+    fetch(URL)
+      .then(response => response.json())
+      .then(data => this.setState({
+        postDetails: data,
+      }));
+  };
+
   render() {
+    const { title, body } = this.state.postDetails;
     return (
       <div>
         <Header title={`${TEXTS.HEADER} ${this.props.match.params.id}`} />
         <Navigation/>
-        <TextSection text={TEXTS.TEXT1} />
+        <h2>{title}</h2>
+        <TextSection text={body} />
         <Footer text={TEXTS.FOOTER} />
       </div>
     )
