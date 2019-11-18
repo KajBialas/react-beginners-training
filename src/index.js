@@ -7,6 +7,7 @@ import HomeComponent from './routes/home/home.component';
 import AuthorComponent from './routes/author/author.component';
 import ContactComponent from './routes/contact/contact.component';
 import PostComponent from './routes/post/post.component';
+import ErrorPage from "./routes/404/404.component";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
       <Route path='/author' component={AuthorComponent} />
       <Route path='/contact' component={ContactComponent} />
       <Route path='/post/:id' component={PostComponent} />
+      <Route component={ErrorPage} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
