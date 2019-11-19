@@ -4,6 +4,7 @@ import Header from '../../components/header/header.component';
 import TextSection from '../../components/textSection/textSection.component';
 import Footer from '../../components/footer/footer.component';
 import Navigation from '../../components/navigation/navigation.component';
+import PostsListsContainer from "../../components/postLists/postsLists.container";
 
 const TEXTS = {
   HEADER: 'Innowacyjna nazwa bloga',
@@ -13,28 +14,7 @@ const TEXTS = {
 };
 
 class App extends Component {
-  state = {
-    allPostsList: [],
-  };
-
-  componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/posts/')
-      .then(response => response.json())
-      .then(data => this.setState({
-        allPostsList: data,
-      }));
-  };
-
-  renderPostList = (postsList) => postsList.map(postItem => (
-    <div key={postItem.id}>
-      <Link to={`/post/${postItem.id}`}>{postItem.title}</Link>
-      <span> - identyfikator autora: {postItem.userId}</span>
-    </div>
-  ));
-
   render() {
-    const { allPostsList } = this.state;
-
     return (
       <div>
         <Header title={TEXTS.HEADER} />
@@ -42,10 +22,7 @@ class App extends Component {
         <TextSection text={TEXTS.TEXT1} />
         <TextSection text={TEXTS.TEXT2} />
 
-        <div>
-          <h2>Lista postów:</h2>
-          {this.renderPostList(allPostsList)}
-        </div>
+        <PostsListsContainer />
         <Footer text={TEXTS.FOOTER} />
       </div>
     )
