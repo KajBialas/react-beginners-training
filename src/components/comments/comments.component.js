@@ -8,8 +8,9 @@ class Comments extends Component {
 
   componentDidMount() {
     const { load, postId } = this.props;
+    const localStoreValue = JSON.parse(load(postId)) || [];
     this.setState({
-      comments: JSON.parse(load(postId))
+      comments: localStoreValue,
     });
   };
 
